@@ -2,13 +2,19 @@
 
 class MessageRepository 
 {
-    public function messageRegister($senderCode, $receiverCode, $subject, $text) {
+    private $message;
+
+    public function __construct(Message $message) {
+        $this->message = $message;
+    }
+
+    public function messageRegister() {
         $connection = DatabaseConnection::getConnection();
         $sql = $connection->prepare("INSERT INTO messages (senderCode, receiverCode, subject, text) VALUES (:sc, :rc, :s, :t)");
-        $sql->bindValue(":sc",$senderCode);
-        $sql->bindValue(":rc",$receiverCode);
-        $sql->bindValue(":s",$subject);
-        $sql->bindValue(":t",$text);
+        $sql->bindValue(":sc",$this->message->getSenderCode());
+        $sql->bindValue(":rc",$this->message->getReceiverCode());
+        $sql->bindValue(":s",$this->message->getSubject());
+        $sql->bindValue(":t",$this->message->getText());
         $sql->execute();
         return true;
     }

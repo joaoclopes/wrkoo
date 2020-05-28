@@ -2,31 +2,31 @@
 
 class Message 
 {
-    protected $senderCode;
-    protected $receiverCode;
+    protected $sender;
+    protected $receiver;
     protected $subject;
     protected $text;
 
-    public function getSenderCode()
+    public function getSender()
     {
-        return $this->senderCode;
+        return $this->sender;
     }
 
-    public function setSenderCode($senderCode)
+    public function setSender($sender)
     {
-        $this->senderCode = $senderCode;
+        $this->sender = $sender;
 
         return $this;
     }
 
-    public function getReceiverCode()
+    public function getReceiver()
     {
-        return $this->receiverCode;
+        return $this->receiver;
     }
 
-    public function setReceiverCode($receiverCode)
+    public function setReceiver($receiver)
     {
-        $this->receiverCode = $receiverCode;
+        $this->receiver = $receiver;
 
         return $this;
     }

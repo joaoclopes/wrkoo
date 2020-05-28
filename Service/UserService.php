@@ -1,6 +1,6 @@
 <?php
 
-require_once('../Models/User/User.php');
+require_once('../Models/User.php');
 
 class UserService 
 {
@@ -20,7 +20,7 @@ class UserService
         if(!$userRepository->codeValidate()) {
             return false;
         }
-
         
+        return true;
     }
 }
