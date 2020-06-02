@@ -4,15 +4,9 @@ require_once '../Service/MessageService.php';
 require_once '../Models/Message.php';
 require_once '../Models/User.php';
 
-class UserController 
+class MessageController 
 {
-    private $message;
-
-    public function __construct(Message $message) {
-        $this->message = $message;
-    }
-
-    public function registerMessage(User $sender, User $receiver, $subject, $text) {
+    public function registerMessage($sender, $receiver, $subject, $text) {
         $newMessage = new Message();
         $newMessage->setSender($sender);
         $newMessage->setReceiver($receiver);
@@ -22,13 +16,10 @@ class UserController
         $messageService = new MessageService($newMessage);
 
         $messageService->messageValidation('123');
-
-        if(!$userService) {
-            return false;
-        } else {
-            $createUser = new UserRepository($newUser);
-            $createUser->register();
-            return true;
-        }
     } 
+
+    public function showMessage() {
+        $showMessage = new Message();
+        $showMessage->messageConsult();
+    }
 }

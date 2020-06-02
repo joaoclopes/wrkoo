@@ -4,23 +4,21 @@ require_once('../Models/User.php');
 
 class UserService 
 {
-    private $user;
-
-    public function __construct(User $user) {
-        $this->user = $user;
-    }
-
-    public function userValidation() {
-        echo $this->user->getName();
-        if(!$this->user->getName() || !$this->user->getCode()) {
+    public function userValidation($name, $code) {
+        if(!$name || !$code) {
             return false;
         } 
 
-        $userRepository = new UserRepository($this->user);
-        if(!$userRepository->codeValidate()) {
+        return self::codeValidate($code);
+    }
+
+    public static function codeValidate($asdasd) {
+        $userRepository = new UserRepository();
+        
+        if(!$userRepository->codeValidate($asdasd)) {
             return false;
         }
-        
+
         return true;
     }
 }

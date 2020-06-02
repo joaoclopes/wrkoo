@@ -12,9 +12,7 @@ class UserController
 
         $userService = new UserService($newUser);
 
-        $userService->userValidation('123');
-
-        if(!$userService) {
+        if(!$userService->userValidation('123')) {
             return false;
         } else {
             $createUser = new UserRepository($newUser);

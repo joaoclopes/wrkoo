@@ -1,39 +1,24 @@
 <?php
 
-require_once('../Models/Message.php');
-require_once('../Serive/UserService.php');
+require_once '../Models/Message.php';
+require_once '../Serive/UserService.php';
 
- class MessageService
- {
-    private $message;
-
-    public function __construct(Message $message) {
-        $this->message = $message;
-    }
-
-    public function messageValidation() {
-        if(
-            !$this->message->getSender() ||
-            !$this->message->getReceiver() ||
-            !$this->message->getSubject() ||
-            !$this->message->getText()
-        ) {
-            echo "Verificar as informações digitadas.";
+class MessageService
+{
+    public function messageValidation($sender, $receiver, $subject, $text)
+    {
+        if (!$sender || !$receiver || !$subject || !$text) {
             return false;
         }
 
-        $userServiceSender = new UserService($this->message->getSender());
-        $userServiceReceiver = new UserService($this->message->getReceiver());
-
-        if(!$userServiceSender->codeValidate() && !$userServiceReceiver->codeValidate()) {
-            echo "Verificar os códigos digitados.";
+        if (!UserService::codeValidate($sender) && !UserService::codeValidate($receiver)) {
             return false;
         }
 
-        if (!$userServiceSender->codeValidate() == !$userServiceReceiver->codeValidate()) {
+        if (!$sender == !$receiver) {
             return false;
         }
 
         return true;
     }
- }
+}
