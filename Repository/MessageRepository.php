@@ -2,8 +2,8 @@
 
 class MessageRepository 
 {
-    public function messageRegister() {
-        $connection = DatabaseConnection::getConnection($sender, $receiver, $subject, $text);
+    public function messageRegister($sender, $receiver, $subject, $text) {
+        $connection = DatabaseConnection::getConnection();
         $sql = $connection->prepare("INSERT INTO messages (senderCode, receiverCode, subject, text) VALUES (:sc, :rc, :s, :t)");
         $sql->bindValue(":sc",$sender);
         $sql->bindValue(":rc",$receiver);
@@ -13,13 +13,10 @@ class MessageRepository
         return true;
     }
 
-    public function messageConsult() {
+    public function fetchMessage() {
         $connection = DatabaseConnection::getConnection();
         $sql = $connection->prepare("SELECT * FROM messages");
         $sql->execute();
         $dataReturn = $sql->fetchAll();
-        foreach($dataReturn as $item) {
-            echo $item["Mensagem: "];
-        }
     }
 }

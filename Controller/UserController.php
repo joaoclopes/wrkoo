@@ -14,10 +14,8 @@ class UserController
 
         if(!$userService->userValidation('123')) {
             return false;
-        } else {
-            $createUser = new UserRepository($newUser);
-            $createUser->register();
-            return true;
         }
+        
+        return true;
     } 
 }

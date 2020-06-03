@@ -13,9 +13,13 @@ class MessageController
         $newMessage->setSubject($subject);
         $newMessage->setText($text);
 
-        $messageService = new MessageService($newMessage);
+        $messageService = new MessageService();
 
-        $messageService->messageValidation('123');
+        if(!$messageService->messageValidation() {
+            return false;
+        }
+
+        return true;
     } 
 
     public function showMessage() {
