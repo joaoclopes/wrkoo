@@ -1,6 +1,6 @@
 <?php
 
-Class DatabaseConnection 
+class DatabaseConnection 
 {
     private function __construct() {
 
@@ -9,12 +9,14 @@ Class DatabaseConnection
     private static $connection;
 
     public static function getConnection($nome, $host, $usuario, $senha) {
-            if(!self::$connection) {
-                try {
-                    self::$connection = new PDO("mysql: dbname=" .$nome. ";host" .$host,$usuario,$senha);
-                } catch (PDOException $e) {
-                    $msgError = $e->getMessage();
-                }
-            } return self::$connection;
-        }
+        if(!self::$connection) {
+            try {
+                self::$connection = new PDO("mysql: dbname=" .$nome. ";host" .$host,$usuario,$senha);
+            } catch (PDOException $e) {
+                $msgError = $e->getMessage();
+            }
+        } 
+        
+        return self::$connection;
+    }
 }

@@ -15,7 +15,7 @@ class MessageController
 
         $messageService = new MessageService();
 
-        if(!$messageService->messageValidation() {
+        if(!$messageService->messageValidation($sender, $receiver, $subject, $text)) {
             return false;
         }
 

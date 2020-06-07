@@ -15,7 +15,6 @@ class UserController
         if(!$userService->userValidation('123')) {
             return false;
         }
-        
         return true;
     } 
 }

@@ -14,7 +14,7 @@ class UserService
             return false;
         } else {
             $createUser = new UserRepository();
-            $createUser->register();
+            $createUser->register($name, $code);
             return true;
         }
 
@@ -26,7 +26,6 @@ class UserService
         if(!$userRepository->codeValidate($asdasd)) {
             return false;
         }
-
         return true;
     }
 }
