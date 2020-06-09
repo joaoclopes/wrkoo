@@ -10,9 +10,9 @@ class UserController
         $newUser->setName($name);
         $newUser->setCode($code);
 
-        $userService = new UserService($newUser);
+        $userService = new UserService();
 
-        if(!$userService->userValidation('123')) {
+        if(!$userService->userValidation($name, $code)) {
             return false;
         }
         return true;

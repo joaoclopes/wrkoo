@@ -24,6 +24,6 @@ class MessageController
 
     public function showMessage() {
         $showMessage = new Message();
-        $showMessage->messageConsult();
+        $showMessage->fetchMessage();
     }
 }

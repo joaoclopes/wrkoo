@@ -15,7 +15,7 @@ class MessageService
             return false;
         }
 
-        if (!$sender == !$receiver) {
+        if ($sender == $receiver) {
             return false;
         }
 

@@ -6,11 +6,11 @@ require_once('../Repository/UserRepository.php');
 class UserService 
 {
     public function userValidation($name, $code) {
-        if(!$this->getName() || !$this->getCode()) {
+        if(!$name || !$code) {
             return false;
         } 
 
-        if(!self::codeValidate($this->getCode())) {
+        if(!self::codeValidate($code)) {
             return false;
         } else {
             $createUser = new UserRepository();
@@ -20,10 +20,10 @@ class UserService
 
     }
 
-    public static function codeValidate($asdasd) {
+    public static function codeValidate($isValid) {
         $userRepository = new UserRepository();
         
-        if(!$userRepository->codeValidate($asdasd)) {
+        if(!$userRepository->codeValidate($isValid)) {
             return false;
         }
         return true;
