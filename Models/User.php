@@ -2,8 +2,8 @@
 
 class User 
 {
-    protected $name;
-    protected $code;
+    private $name;
+    private $code;
 
     public function getName()
     {

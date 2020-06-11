@@ -2,10 +2,10 @@
 
 class Message 
 {
-    protected $sender;
-    protected $receiver;
-    protected $subject;
-    protected $text;
+    private $sender;
+    private $receiver;
+    private $subject;
+    private $text;
 
     public function getSender()
     {

@@ -21,4 +21,10 @@ class MessageService
 
         return true;
     }
+
+    public function findMessage() 
+    {
+        $newFindMessage = new MessageRepository();
+        $newFindMessage->fetchMessage();
+    }
 }
