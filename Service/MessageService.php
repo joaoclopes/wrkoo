@@ -11,7 +11,9 @@ class MessageService
             return false;
         }
 
-        if (!UserService::codeValidate($sender) && !UserService::codeValidate($receiver)) {
+        $validUser = new UserService();
+
+        if (!$validUser->codeValidate($sender) && !$validUser->codeValidate($receiver)) {
             return false;
         }
 

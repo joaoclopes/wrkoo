@@ -10,7 +10,7 @@ class UserService
             return false;
         } 
 
-        if(!self::codeValidate($code)) {
+        if(!codeValidate($code)) {
             return false;
         } else {
             $createUser = new UserRepository();
@@ -20,7 +20,7 @@ class UserService
 
     }
 
-    public static function codeValidate($isValid) {
+    public function codeValidate($isValid) {
         $userRepository = new UserRepository();
         
         if(!$userRepository->codeValidate($isValid)) {

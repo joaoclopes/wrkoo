@@ -4,23 +4,14 @@ require_once '../Service/MessageService.php';
 require_once '../Models/Message.php';
 require_once '../Models/User.php';
 
-$registerMessage = new MessageController();
-
-$sender = $_POST['sender'];
-$receiver = $_POST['receiver'];
-$subject = $_POST['subject'];
-$text = $_POST['text'];
-
-$regiterUser->registerMessage($sender, $receiver, $subject, $text);
-
 class MessageController 
 {
-    public function registerMessage($sender, $receiver, $subject, $text) {
+    public function registerMessage() {
         $newMessage = new Message();
-        $newMessage->setSender($sender);
-        $newMessage->setReceiver($receiver);
-        $newMessage->setSubject($subject);
-        $newMessage->setText($text);
+        $newMessage->setSender($_POST['sender']);
+        $newMessage->setReceiver($_POST['receiver']);
+        $newMessage->setSubject($_POST['subject']);
+        $newMessage->setText($_POST['text']);
 
         $messageService = new MessageService();
 

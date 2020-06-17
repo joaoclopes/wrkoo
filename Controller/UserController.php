@@ -5,10 +5,10 @@ require_once '../Models/User.php';
 
 class UserController 
 {
-    public function registerUser($name, $code) {
+    public function registerUser() {
         $newUser = new User();
-        $newUser->setName($name);
-        $newUser->setCode($code);
+        $newUser->setName($_POST['name']);
+        $newUser->setCode($_POST['code']);
 
         $userService = new UserService();
 
