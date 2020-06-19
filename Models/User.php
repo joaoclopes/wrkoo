@@ -22,9 +22,9 @@ class User
         return $this->code;
     }
 
-    public function setCode($Code)
+    public function setCode($code)
     {
-        $this->Code = $code;
+        $this->code = $code;
 
         return $this;
     }

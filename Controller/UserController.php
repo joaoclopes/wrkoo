@@ -7,10 +7,11 @@ class UserController
 {
     public function registerUser() {
         $newUser = new User();
-        $newUser->setName($_POST['name']);
-        $newUser->setCode($_POST['code']);
+        $name = ($_POST['name']);
+        $code = ($_POST['code']);
 
         $userService = new UserService();
+        
 
         if(!$userService->userValidation($name, $code)) {
             return false;

@@ -10,7 +10,7 @@ class UserService
             return false;
         } 
 
-        if(!codeValidate($code)) {
+        if(!$this->codeValidate($code)) {
             return false;
         } else {
             $createUser = new UserRepository();
@@ -20,10 +20,10 @@ class UserService
 
     }
 
-    public function codeValidate($isValid) {
+    public function codeValidate($code) {
         $userRepository = new UserRepository();
         
-        if(!$userRepository->codeValidate($isValid)) {
+        if(!$userRepository->codeValidate($code)) {
             return false;
         }
         return true;

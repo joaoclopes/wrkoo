@@ -1,5 +1,7 @@
 <?php
 
+require_once 'DatabaseRepository.php';
+
 class UserRepository
 {
     public function codeValidate($code) {

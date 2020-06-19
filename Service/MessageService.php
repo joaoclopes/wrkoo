@@ -1,7 +1,7 @@
 <?php
 
 require_once '../Models/Message.php';
-require_once '../Serive/UserService.php';
+require_once 'UserService.php';
 
 class MessageService
 {
