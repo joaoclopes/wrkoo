@@ -8,10 +8,10 @@ class MessageController
 {
     public function registerMessage() {
         $newMessage = new Message();
-        $newMessage->setSender(addslashes($_POST['sender']));
-        $newMessage->setReceiver($_POST['receiver']);
-        $newMessage->setSubject($_POST['subject']);
-        $newMessage->setText($_POST['text']);
+        $sender = (addslashes($_POST['sender']));
+        $receiver = (addslashes($_POST['receiver']));
+        $subject = (addslashes($_POST['subject']));
+        $text = (addslashes($_POST['text']));
 
         $messageService = new MessageService();
 

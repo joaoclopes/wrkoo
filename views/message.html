@@ -9,12 +9,13 @@
         <div id=corpo-cad class="row" style="text-align: center;">
             <div class="align-middle" style="width: 16rem">
                 <div class="card-body">
-                    <h1>Login</h1>
-                    <form method="POST" action="">
-                    <input type="name" placeholder="Nome" name="Nome">
-                    <input type="number" placeholder="Código" name="Código">
+                    <h1>Enviar Mensagem</h1>
+                    <form method="POST" action="../routes/index.php?action=MessageController&method=registerMessage" >
+                    <input type="number" placeholder="Remetente" name="sender">
+                    <input type="number" placeholder="destinatário" name="receiver">
+                    <input type="text" placeholder="Assunto" name="subject">
+                    <input type="text" placeholder="Texto" name="text">
                     <input type="submit" value="Submit">
-                    <a href="login.html"> Voltar </a>
                     </form>
                 </div>
             </div>    
