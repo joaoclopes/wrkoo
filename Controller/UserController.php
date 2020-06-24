@@ -17,5 +17,19 @@ class UserController
             return false;
         }
         return true;
-    } 
+    }
+    
+    public function loginUser() {
+        $name = ($_POST['name']);
+        $code = ($_POST['code']);
+
+        $userService = new UserService();
+
+        if(!$userService->userValidation($name, $code)) {
+            return false;
+        }
+
+        session_start();
+        $_SESSION['code'] = $code;
+    }
 }
