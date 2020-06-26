@@ -5,19 +5,24 @@ require_once 'UserService.php';
 
 class MessageService
 {
-    public function messageValidation($sender, $receiver, $subject, $text)
+    public function messageValidation(Message $message)
     {
-        if (!$sender || !$receiver || !$subject || !$text) {
+        if (!$this->message->getSender()   || 
+            !$this->message->getReceiver() || 
+            !$this->message->getSubject()  || 
+            !$this->message->getText()) {
             return false;
         }
 
-        $validUser = new UserService();
+        $userService = new UserService();
 
-        if (!$validUser->codeValidate($sender) && !$validUser->codeValidate($receiver)) {
+        if (!$userService->validateCode($this->message->getSender()) && 
+            !$userService->validateCode($this->message->getReceiver())) {
             return false;
         }
 
-        if ($sender == $receiver) {
+        if ($this->message->getSender() == 
+            $this->message->getReceiver()) {
             return false;
         }
 
@@ -26,7 +31,7 @@ class MessageService
 
     public function findMessage() 
     {
-        $newFindMessage = new MessageRepository();
-        $newFindMessage->fetchMessage();
+        $messageRepository = new MessageRepository();
+        $messageRepository->fetchMessage();
     }
 }

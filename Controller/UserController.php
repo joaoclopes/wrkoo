@@ -13,9 +13,15 @@ class UserController
         $userService = new UserService();
         
 
-        if(!$userService->userValidation($name, $code)) {
+        if(!$userService->validateName($name)) {
             return false;
         }
+
+        if(!$userService->validateCode($code)) {
+            return false;
+        }
+
+        $userService->createUser($name, $code);
         return true;
     }
     
@@ -25,7 +31,8 @@ class UserController
 
         $userService = new UserService();
 
-        if(!$userService->userValidation($name, $code)) {
+        if(!$userService->validateName($name) &&
+           !$userService->validateCode($code)) {
             return false;
         }
 

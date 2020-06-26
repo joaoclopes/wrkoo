@@ -4,7 +4,7 @@ require_once 'DatabaseRepository.php';
 
 class UserRepository
 {
-    public function codeValidate($code) {
+    public function validateUserByCode($code) {
         $connection = DatabaseConnection::getConnection();
         $sql = $connection->prepare("SELECT user_id FROM users WHERE code = :c");
         $sql->bindValue(":c",$code);
